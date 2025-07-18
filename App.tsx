@@ -1,21 +1,26 @@
 import React from 'react';
+import { SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from './src/screens/HomeScreen';
-import DetailScreen from './src/screens/DetailScreen';
-import { RootStackParamList } from './types';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+import HomeScreen from './src/HomeScreen';        // ✅ Correct screen import
+import DetailScreen from './src/DetailScreen';    // ✅ Detail screen
+import ProfileScreen from './src/ProfileScreen';  // ✅ Add Profile screen
 
-const App = () => {
+const Stack = createStackNavigator();
+
+function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Detail" component={DetailScreen} />
-      </Stack.Navigator>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Stack.Navigator initialRouteName="HomeScreen">
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+          <Stack.Screen name="Detail" component={DetailScreen} />
+        </Stack.Navigator>
+      </SafeAreaView>
     </NavigationContainer>
   );
-};
+}
 
 export default App;

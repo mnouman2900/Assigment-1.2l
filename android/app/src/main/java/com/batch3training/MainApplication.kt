@@ -1,4 +1,4 @@
-package com.noumanproject
+package com.batch3training
 
 import android.app.Application
 import com.facebook.react.PackageList
